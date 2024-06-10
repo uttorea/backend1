@@ -44,3 +44,41 @@ def submit_contact_form(request):
             return JsonResponse({"error": str(e)}, status=500)
     
     return JsonResponse({"error": "Invalid request method."}, status=400)
+
+from django.core.mail import send_mail
+import logging
+
+logger = logging.getLogger(__name__)
+
+@csrf_exempt
+def send_brochure_request(request):
+    if request.method == 'POST':
+        try:
+            data = json.loads(request.body)
+            system = data.get('system')
+            full_name = data.get('fullName')
+            email = data.get('email')
+            
+            if not system or not full_name or not email:
+                return JsonResponse({'error': 'Missing fields in request data'}, status=400)
+            
+            # Email content
+            subject = 'Brochure Request'
+            message = (
+                f"This user requested the download brochure of {system}\n"
+                f"Name: {full_name}\n"
+                f"Email: {email}\n\n"
+                f"This user requested the brochure for the {system}."
+            )
+            from_email = 'your_email@example.com'
+            fixed_recipient_email = 'nikhilrai662@gmail.com'
+            
+            # Send the email to the fixed recipient
+            send_mail(subject, message, from_email, [fixed_recipient_email])
+            
+            return JsonResponse({'message': 'Email sent successfully'})
+        except Exception as e:
+            logger.error(f'Error processing request: {e}')
+            return JsonResponse({'error': 'Internal Server Error'}, status=500)
+    else:
+        return JsonResponse({'error': 'Invalid request method'}, status=405)

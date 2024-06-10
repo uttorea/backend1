@@ -20,4 +20,5 @@ from mainapp import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/contact/', views.submit_contact_form, name='submit_contact_form'),
+    path('send_brochure_request/', views.send_brochure_request, name='send_brochure_request'),
 ]

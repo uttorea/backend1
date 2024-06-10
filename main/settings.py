@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-5pq&2m@^7z&^b1663iy0!z@llq2%vh1xl-w&ds4lv-iy&soiam'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ["*"]
 
@@ -124,7 +124,7 @@ USE_TZ = True
 CORS_ALLOWED_ORIGINS = [
     "https://uttoria.vercel.app",
     "http://172.17.244.238:3000",
-    "http://localhost:3000",
+    'http://localhost:3000'
 ]
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
