@@ -124,6 +124,7 @@ USE_TZ = True
 CORS_ALLOWED_ORIGINS = [
     "https://uttoria.vercel.app",
     "http://172.17.244.238:3000",
+    "http://localhost:3000",
 ]
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
