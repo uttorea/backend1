@@ -122,7 +122,7 @@ USE_I18N = True
 USE_TZ = True
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",
+    "https://uttoria.vercel.app",
     "http://172.17.244.238:3000",
 ]
 # Static files (CSS, JavaScript, Images)
